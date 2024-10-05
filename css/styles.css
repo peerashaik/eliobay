@@ -2407,7 +2407,7 @@ progress {
 }
 .form-floating > label {
   color: var(--white);
-  font-size: 16px;
+  font-size: 14px;
   position: absolute;
   top: 0;
   left: 0;
@@ -2423,10 +2423,21 @@ progress {
   }
 }
 .form-floating > .form-control, .form-floating > .dataTable-input {
-  font-size: 14px;
+  font-size: 12px;
   padding-top: 1.625rem;
   padding-bottom: 0.625rem;
 }
+
+@media (min-width: 768px) {
+  .form-floating > label {
+    font-size: 16px;
+  }
+  .form-floating > .form-control, .form-floating > .dataTable-input {
+    font-size: 14px;
+  }
+}
+
+
 .form-floating > .form-control::-moz-placeholder, .form-floating > .dataTable-input::-moz-placeholder {
   color: transparent;
 }
@@ -3546,8 +3557,9 @@ progress {
   background: rgba(255, 255, 255, .5);
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
-  border: 2px solid var(--black);
+  border: 1px solid var(--black);
   border-bottom: 0;
+  font-size: 12px;
   opacity: 0.6;
 }
 .nav-tabs .nav-link.active,
@@ -3810,7 +3822,7 @@ progress {
     transform: none;
   }
   .navbar-expand-lg .offcanvas-top,
-.navbar-expand-lg .offcanvas-bottom {
+  .navbar-expand-lg .offcanvas-bottom {
     height: auto;
     border-top: 0;
     border-bottom: 0;
@@ -3821,6 +3833,11 @@ progress {
     padding: 0;
     overflow-y: visible;
   }
+  .nav-tabs .nav-link {
+    border: 2px solid var(--black);
+    font-size: 16px;
+  }
+
 }
 @media (min-width: 1200px) {
   .navbar-expand-xl {

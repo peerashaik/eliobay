@@ -90,9 +90,7 @@ $headers .= 'From: ElioBay no-reply@eliobay.com' . "\r\n";
         }
     }
 }
-?>
-
-<?php 
+ 
 if(isset($_POST['buyer_submit'])) {
 
     $name=$_POST['name'];

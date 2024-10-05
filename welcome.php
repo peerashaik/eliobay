@@ -21,8 +21,9 @@ window.addEventListener("load", function() {
     let urlBuyer = "buyer=success";
 
     if(url[1] === urlUser) {
-        $("#userSuccess").addClass('slidein');
+        $("#userSuccess").addClass('slideup');
         setTimeout(function() {
+            $("#userSuccess").removeClass('slideup');
             $("#userSuccess").addClass('slidedown');
         }, 8000);
         setTimeout(function() {
@@ -30,8 +31,9 @@ window.addEventListener("load", function() {
             $(".what-we-do").addClass('slideright');
         }, 8400);
     } else if(url[1] === urlBuyer) {
-        $("#buyerSuccess").addClass('slidein');
+        $("#buyerSuccess").addClass('slideup');
         setTimeout(function() {
+            $("#buyerSuccess").removeClass('slideup');
             $("#buyerSuccess").addClass('slidedown');
         }, 8000);
         setTimeout(function() {
@@ -40,11 +42,10 @@ window.addEventListener("load", function() {
         }, 8400);
     }      
 });
-
 </script>
 
 </head>
-<body>
+<body class="success-page">
 <!-- Header Section -->
 <div class="header bg-black text-white text-center">
     <a href="index.php"><img src="images/logo.svg" class="logo" loading="lazy" alt="ElioBay" /></a>
@@ -67,10 +68,9 @@ window.addEventListener("load", function() {
         <div>
             <h4>WHAT WE DO.</h4>
             <p>We help homeowners install solar panels with minimal upfront costs by using investments from Tokens - ELIO Energy and saving your money on energy bills.</p>
-            <p>We offer token buyers the opportunity to invest in solar energy projects. By purchasing Tokens - ELIO Energy, you support solar installations and receive profits generated from clean energy</p>
+            <p class="mb-0">We offer token buyers the opportunity to invest in solar energy projects. By purchasing Tokens - ELIO Energy, you support solar installations and receive profits generated from clean energy</p>
         </div>
     </div>
-    <!-- <img src="images/welcome-banner.jpeg" loading="lazy" alt="ElioBay" /> -->
 </div>
 
 <div id="userSuccess" class="success-popup">
@@ -81,7 +81,7 @@ window.addEventListener("load", function() {
     </div>
 </div>
 
-<div id="buyerSuccess" class="success-popup" tabindex="-1">
+<div id="buyerSuccess" class="success-popup">
     <div class="text-white">
         <p>Thank you for signing up!</p>
         <p>You’re eligible for a 20% discount. </p>

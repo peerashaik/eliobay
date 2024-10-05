@@ -47,10 +47,15 @@ body {
     color: var(--white);
     background-color: var(--black);
     font-family: 'heliosextregular';
-    font-size: 16px;
+    font-size: 14px;
     text-shadow: 0 0 4px var(--black);
-    line-height: 22px;
+    line-height: 18px;
     margin: 0;
+}
+
+body.success-page {
+    height: 100vh;
+    overflow: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -61,13 +66,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-    font-size: 42px;
-    line-height: 38px;
+    font-size: 20px;
+    line-height: 20px;
 }
 
 h2 {
-    font-size: 24px;
-    line-height: 28px;
+    font-size: 20px;
+    line-height: 24px;
 }
 
 h3 {
@@ -351,13 +356,18 @@ img.admin-logo {
 
 .welcome-banner {
     background: url('../images/welcome-banner.jpeg') no-repeat center;
+    padding: 30px 0;
+    overflow-y: scroll;
 }
 
 .hero-banner,
 .welcome-banner {
     background-size: cover;
     display: flex;
-    height: calc(100vh - 125px);
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: calc(100vh - 130px);
     position: relative;
 }
 
@@ -451,17 +461,12 @@ img.admin-logo {
 .what-we-do {
     color: var(--white);
     display: block;
-/*  background-color: rgba(0, 0, 0, 0.7);*/
     margin: 0 30px;
-    padding: 30px;
+    padding: 0;
     position: relative;
     left: inherit;
     right: inherit;
     height: auto;
-}
-
-.what-we-do {
-    margin-top: 40px;
 }
 
 .who-we-are h4,
@@ -479,10 +484,51 @@ img.admin-logo {
     list-style: none;
 }
 
+.who-we-are {
+    left: -500px;
+}
+
+.what-we-do {
+    margin-top: 20px;
+    right: -500px;
+}
+
+.who-we-are.slideleft {
+    left: 0;
+    animation: 1s slide-left;
+}
+
+.what-we-do.slideright {
+    right: 0;
+    animation: 1s slide-right;
+}
+
+@keyframes slide-left {
+  from {
+    left: -500px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-right {
+  from {
+    right: -500px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
 .success-popup {
     display: flex;
     justify-content: center;
-    position: fixed;
+    position: absolute;
     bottom: -500px;
     width: 100%;
     z-index: 9999;
@@ -493,21 +539,42 @@ img.admin-logo {
     border-radius: 10px;
     box-shadow: 0 0 4px var(--gray);
     padding: 10px 20px;
-    width: 420px;
+    width: 96%;
 }
 
 .success-popup p {
     margin: 10px 0;
 }
 
-.success-popup.slidein {
-    bottom: 0;
+.success-popup.slideup {
+    bottom: 60px;
     animation: 1s slide-up;
 }
 
 .success-popup.slidedown {
-    bottom: -500px;
     animation: 1s slide-down;
+}
+
+@keyframes slide-up {
+  from {
+    bottom: -500px;
+    opacity: 0;
+  }
+  to {
+    bottom: 60px;
+    opacity: 1;
+  }
+}
+
+@keyframes slide-down {
+  from {
+    bottom: 60px;
+    opacity: 1;
+  }
+  to {
+    bottom: -500px;
+    opacity: 0;
+  }
 }
 
 .email-exist {
@@ -539,28 +606,6 @@ img.admin-logo {
     }
 }
 
-@keyframes slide-up {
-  from {
-    bottom: -500px;
-    opacity: 0;
-  }
-  to {
-    bottom: 0;
-    opacity: 1;
-  }
-}
-
-@keyframes slide-down {
-  from {
-    bottom: 0;
-    opacity: 1;
-  }
-  to {
-    bottom: -500px;
-    opacity: 0;
-  }
-}
-
 .privacy-content p,
 .privacy-content strong {
     font-size: 12px;
@@ -586,7 +631,7 @@ img.admin-logo {
     cursor: pointer;
     padding: 0;
     position: absolute;
-    right: 0;
+    right: 15px;
     top: 0;
     z-index: 999;
     width: 30px;
@@ -651,17 +696,47 @@ img.admin-logo {
   100% { transform: rotate(360deg); }
 }
 
+.modal-dialog {
+    margin: 0;
+}
+
 #privacyModal .modal-dialog {
     margin: 0 auto;
 }
 
 @media (min-width: 768px) {
+    body {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    h1 {
+        font-size: 42px;
+        line-height: 38px;
+    }
+
+    h2 {
+        font-size: 24px;
+        line-height: 28px;
+    }
+
     .modal-dialog {
         max-width: 600px;
+        margin: 0 auto;
     }
 
     .modal-dialog.privacy {
         max-width: 620px;
+    }
+
+    .hero-banner,
+    .welcome-banner {
+        height: calc(100vh - 144px);
+    }
+
+    .welcome-banner {
+        padding: 0;
+        overflow: inherit;
     }
 
     .hero-banner .user,
@@ -724,53 +799,46 @@ img.admin-logo {
         z-index: 9;
     }
 
-    .who-we-are {
-        left: -500px;
-    }
-
     .what-we-do {
-        right: -500px;
-    }    
+        margin-top: 40px;
+    }
 
     .who-we-are.slideleft {
         left: 8%;
-        animation: 1s slide-left;
     }
 
     .what-we-do.slideright {
         right: 8%;
-        animation: 1s slide-right;
     }
 
     @keyframes slide-left {
       from {
         left: -500px;
-        opacity: 0;
       }
       to {
         left: 8%;
-        opacity: 1;
       }
     }
 
     @keyframes slide-right {
       from {
         right: -500px;
-        opacity: 0;
       }
       to {
         right: 8%;
-        opacity: 1;
       }
     }
 
-    .success-popup.slidein {
+    .success-popup div {
+        width: 420px;
+    }
+
+    .success-popup.slideup {
         bottom: 78px;
         animation: 1s slide-up;
     }
 
     .success-popup.slidedown {
-        bottom: -500px;
         animation: 1s slide-down;
     }
 
@@ -804,5 +872,9 @@ img.admin-logo {
 
     .copyright {
         font-size: 1.825rem;
+    }
+
+    .btn-close {
+        right: 0;
     }
 }
